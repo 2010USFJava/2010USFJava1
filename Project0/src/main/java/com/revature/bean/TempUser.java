@@ -10,18 +10,7 @@ public class TempUser extends User
 	private double income;
 	private double deposit = 0;
 	private String approved;
-		
-	public TempUser(String uId, String pw, String fN, String lN, String ss, double income, double deposit)
-	{
-		super(uId, pw, fN, lN, ss);
-		this.income = income;
-		this.deposit = deposit;
-		approved = "waiting";
-		Roster.tempUserList.add(this);
-		Data.writeTempUserData(Roster.tempUserList);
-		//LogThis.logIt("info", "Welcome little... " + this.firstName + " " + this.lastName);
-	}
-
+	
 	public TempUser(TempUser u) 
 	{
 		super(u);
@@ -29,6 +18,20 @@ public class TempUser extends User
 		this.deposit = u.deposit;
 		approved = u.approved;		
 	}
+		
+	public TempUser(String uId, String pw, String fN, String lN, String ss, double income, double deposit)
+	{
+		super(uId, pw, fN, lN, ss);
+		this.income = income;
+		this.deposit = deposit;
+		approved = "waiting";
+		
+		Roster.tempUserList.add(this);
+		Data.writeTempUserData(Roster.tempUserList);
+		//LogThis.logIt("info", "Added temp user " + this.firstName + " " + this.lastName);
+	}
+
+
 
 	public double getIncome() {
 		return income;
@@ -46,7 +49,7 @@ public class TempUser extends User
 		this.deposit = deposit;
 	}
 
-	public String isApproved() {
+	public String getApproved() {
 		return approved;
 	}
 
@@ -56,17 +59,8 @@ public class TempUser extends User
 
 	@Override
 	public String toString() {
-		return "TempUser [income=" + income + ", approved=" + approved + ", toString()=" + super.toString() + "]";
+		return "TempUser " +  super.toString() + "income=" + income + " deposit=" 
+				+ deposit+ ", approved=" + approved + "]";
+		
 	}	
-	
-	public String showString() {
-		return "Hello, " + super.getFirstName() + "We are still working on approving your application. We will"
-				+ "email you when you have been approved or denied.\n Thank you for applying with Bank App! "
-				+ "Have a nice day.";
-	}
-
-	
-	
-	
-
 }
