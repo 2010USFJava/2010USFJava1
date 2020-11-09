@@ -97,13 +97,87 @@ public class Menu
 	
 	public static void welcome(Customer u) 	
 	{
-        System.out.println("in welcome customer");
-		 
-        System.out.println(((Customer) u).toString());
-        
-        System.out.println(u.toString());
-        
-        System.out.println(u);	
+		boolean check = false;
+		String back = "n";
+	
+			displayLogo();		
+			System.out.println("Hello, " + u.getFirstName() + " " + u.getLastName());					
+	
+			System.out.println("Please pick a Menu Option below:"				
+				+ "\n\t[B]: Balance"									
+				+ "\n\t[D]: Deposit"
+				+ "\n\t[T]: Transfer"
+				+ "\n\t[W]: Withdrawal"
+				+ "\n\n\t[L]: Log Out");
+			choice = in.nextLine();			
+		
+			switch(choice) 
+			{
+			case "B":
+				System.out.println(u);
+			
+				break;
+			
+			case "D":
+				do
+				{
+					System.out.println("What is the amount you would like to depoist: ");
+					String d = in.nextLine();
+					
+					check = u.deposit(Double.parseDouble(d));
+				
+					System.out.println(u);
+				
+					LogThis.logIt("info", u.getFirstName() + " " + u.getLastName() + 
+						" made a deposit");
+				}while(check == false);				
+		    
+				break;
+		    
+			case "T":
+				do
+				{
+					System.out.println("What is the amount you would like to transfer: ");
+					String t = in.nextLine();
+				 
+					System.out.println("What is the user id of the person you would like to transfer to?");
+					String userId = in.nextLine();
+			
+					Customer transferCustomer = new Customer((Customer)r.getUserByUserId(userId));
+					check = u.transfer(Double.parseDouble(t), transferCustomer);
+			
+					LogThis.logIt("info", u.getFirstName() + " " + u.getLastName() + 
+							" made a transfer for to " + transferCustomer.getFirstName());
+			    } while(check == false);
+			
+				break;
+		    
+			case "W":
+				 do
+				 {
+					 System.out.println("What is the amount you would like to withdrawal: ");
+					 String w = in.nextLine();
+			
+					 check = u.withdrawal(Double.parseDouble(w));
+					 
+					 System.out.println(u);
+				
+					 LogThis.logIt("info", u.getFirstName() + " " + u.getLastName() + 
+							 " made a withdrawal" );
+				 }while(check == false);
+			
+				 break;
+				  
+			case "L":
+				start();
+	    	 
+				break;
+	    	 
+			default:
+				welcome(u);
+			}
+			
+		welcome(u);
      }
 	
 	public static void welcome(Employee u) 
@@ -391,7 +465,7 @@ public class Menu
 				
 				displayLogo();
 
-				System.out.println("\n\n Thank you for adding the new employee. Please print off badge...\n");
+				System.out.println("\n\n Thank you for adding the new employee. Please print off their badge...\n");
 				//System.out.println(tU);
 				
 				logOut();
