@@ -1,0 +1,4 @@
+[INFO ] 2020-11-17 21:41:53.218 [main] LogThis - Customer [id=1, email=pmaurer@gmail.com, password=Porky, fName=Petra, lName=Maurer, ssn=235849756, address=140 Paradise Ln, city=Boca Raton, state=FL, zip=30044]logged in
+[INFO ] 2020-11-17 21:44:28.521 [main] LogThis - Customer [id=1, email=pmaurer@gmail.com, password=Porky, fName=Petra, lName=Maurer, ssn=235849756, address=140 Paradise Ln, city=Boca Raton, state=FL, zip=30044]logged in
+[INFO ] 2020-11-17 22:55:48.382 [main] LogThis - Employee [id=1, email=admin@thriving.net, password=password, fName=Admin, lName=Istrator, ssn=235563756, address=140 Employ Ln, city=Miami, state=FL, zip=30094]logged into work
+[INFO ] 2020-11-17 23:10:42.227 [main] LogThis - Employee [id=1, email=admin@thriving.net, password=password, fName=Admin, lName=Istrator, ssn=235563756, address=140 Employ Ln, city=Miami, state=FL, zip=30094]logged into work
